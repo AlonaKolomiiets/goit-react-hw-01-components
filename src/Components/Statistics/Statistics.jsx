@@ -6,19 +6,29 @@ import { List } from "./Statistics.slyled";
 import { FirstFont } from "./Statistics.slyled";
 
 const Statistics = ({ title, stats }) => {
+  const filteredArr = stats.reduce((uniqueStats, currentStat) => {
+    const comparisonLabel = uniqueStats.find(
+      (stat) => stat.label === currentStat.label
+    );
+    if (!comparisonLabel) {
+      uniqueStats.push({ ...currentStat });
+    } else {
+      comparisonLabel.percentage += currentStat.percentage;
+    }
+    return uniqueStats;
+  }, []);
   return (
-    <section className="statistics">
+    <SectionStatistics className="statistics">
       {title && <h2 className="title">{title}</h2>}
       <List className="stat-list">
-    
-        {stats.map((stat) => (
-          <ListItem className="item">
+        {filteredArr.map((stat) => (
+          <ListItem className="item" key={stat.label}>
             <FirstFont className="label">{stat.label}</FirstFont>
             <FirstFont className="percentage">{stat.percentage}</FirstFont>
           </ListItem>
         ))}
       </List>
-    </section>
+    </SectionStatistics>
   );
 };
 

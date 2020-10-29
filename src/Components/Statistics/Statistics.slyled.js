@@ -13,11 +13,13 @@ export const SectionStatistics = styled.section`
   height: 100%;
   border: 1px solid gray;
   margin: 10px;
+  text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: gray;
 `;
 export const FirstFont = styled.span`
   color: #ffffff;
   font-size: 14px;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   display: block;
   padding: 5px;
 `;
