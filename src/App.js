@@ -19,18 +19,8 @@ function App() {
         avatar={user.avatar}
         stats={user.stats}
       />
-
       <Statistics stats={stats} />
-
-      {friends.map((friend) => (
-        <FriendList
-          key={friend.id}
-          avatar={friend.avatar}
-          name={friend.name}
-          isOnline={friend.isOnline}
-        />
-      ))}
-
+      <FriendList friends={friends} />
       <TransactionHistory items={transactions} />
     </>
   );

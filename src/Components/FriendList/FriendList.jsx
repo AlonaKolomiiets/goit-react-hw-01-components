@@ -1,22 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
+import FriendListItem from "../FriendListItem/FriendListItem";
 
-const FriendList = ({ avatar, name, isOnline }) => {
+const FriendList = ({ friends }) => {
   return (
-    <li className="item">
-      <span className="status">{isOnline}</span>
-      <img className="avatar" src={avatar} alt={name} width="48" />
-      <p className="name">{name}</p>
-    </li>
+    <ul class="friend-list">
+      {friends.map((friend) => (
+        <FriendListItem
+          key={friend.id}
+          avatar={friend.avatar}
+          name={friend.name}
+          isOnline={friend.isOnline}
+        />
+      ))}
+    </ul>
   );
 };
 
 export default FriendList;
 
 FriendList.propTypes = {
-  avatar: PropTypes.string,
-  name: PropTypes.string.isRequired,
-  isOnline: PropTypes.bool.isRequired,
+  friends: PropTypes.array.isRequired,
 };
 
 // В зависимости от пропа isOnline,
